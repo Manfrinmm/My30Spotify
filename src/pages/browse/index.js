@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
+
 import { bindActionCreators } from "redux";
-import { Creators as PlaylistsActions } from "../../store/ducks/playlists";
 
 import Loading from "../../components/Loading";
-
+import { Creators as PlaylistsActions } from "../../store/ducks/playlists";
 import { Container, Title, List, Playlist } from "./styles";
 
 class browse extends Component {
@@ -14,6 +13,7 @@ class browse extends Component {
 
     getPlaylistRequest();
   }
+
   render() {
     const { loading, data: playlists } = this.props.playlists;
 
@@ -36,13 +36,10 @@ class browse extends Component {
 }
 
 const mapStateToProps = state => ({
-  playlists: state.playlists
+  playlists: state.playlists,
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(PlaylistsActions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(browse);
+export default connect(mapStateToProps, mapDispatchToProps)(browse);

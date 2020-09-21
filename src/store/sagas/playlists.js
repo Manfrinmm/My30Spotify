@@ -1,8 +1,8 @@
 import { call, put } from "redux-saga/effects";
-import api from "../../services/api";
 
-import { Creators as PlaylistsAction } from "../ducks/playlists";
+import api from "../../services/api";
 import { Creators as ErrorAactions } from "../ducks/error";
+import { Creators as PlaylistsAction } from "../ducks/playlists";
 
 export function* getPlaylists() {
   try {

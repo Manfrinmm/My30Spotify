@@ -1,11 +1,18 @@
 import React from "react";
-import Slider from "rc-slider";
+import { connect } from "react-redux";
 import Sound from "react-sound";
 
-import { connect } from "react-redux";
+import Slider from "rc-slider";
 import { bindActionCreators } from "redux";
-import { Creators as PlayerActions } from "../../store/ducks/player";
 
+import BackwardIcon from "../../assets/images/backward.svg";
+import ForwardIcon from "../../assets/images/forward.svg";
+import PauseIcon from "../../assets/images/pause.svg";
+import PlayIcon from "../../assets/images/play.svg";
+import RepeatIcon from "../../assets/images/repeat.svg";
+import ShuffleIcon from "../../assets/images/shuffle.svg";
+import VolumeIcon from "../../assets/images/volume.svg";
+import { Creators as PlayerActions } from "../../store/ducks/player";
 import {
   Container,
   Current,
@@ -13,16 +20,8 @@ import {
   Progress,
   Controls,
   Time,
-  ProgressSlider
+  ProgressSlider,
 } from "./styles";
-
-import VolumeIcon from "../../assets/images/volume.svg";
-import ShuffleIcon from "../../assets/images/shuffle.svg";
-import BackwardIcon from "../../assets/images/backward.svg";
-import PlayIcon from "../../assets/images/play.svg";
-import PauseIcon from "../../assets/images/pause.svg";
-import ForwardIcon from "../../assets/images/forward.svg";
-import RepeatIcon from "../../assets/images/repeat.svg";
 
 const Player = ({
   player,
@@ -37,7 +36,7 @@ const Player = ({
   setPosition,
   positionShown,
   progress,
-  setVolume
+  setVolume,
 }) => (
   <Container>
     {!!player.currentSong && (
@@ -113,7 +112,7 @@ const Player = ({
       <Slider
         railStyle={{
           background: "#404040",
-          borderRadius: 10
+          borderRadius: 10,
         }}
         trackStyle={{ background: "#fff" }}
         handleStyle={{ display: "none" }}
@@ -128,7 +127,7 @@ function msToTime(duration) {
   if (!duration) return null;
 
   let seconds = parseInt((duration / 1000) % 60, 10);
-  let minutes = parseInt((duration / 60000) % 60, 10);
+  const minutes = parseInt((duration / 60000) % 60, 10);
 
   seconds = seconds < 10 ? `0${seconds}` : seconds;
 
@@ -144,14 +143,11 @@ const mapStateToProps = state => ({
     parseInt(
       (state.player.positionShown || state.player.position) *
         (1000 / state.player.duration),
-      10
-    ) || 0
+      10,
+    ) || 0,
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(PlayerActions, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Player);
+export default connect(mapStateToProps, mapDispatchToProps)(Player);

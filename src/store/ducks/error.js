@@ -1,11 +1,11 @@
 export const Types = {
   SET: "error/SET",
-  HIDE: "error/HIDE"
+  HIDE: "error/HIDE",
 };
 
 const INITIAL_STATE = {
   visible: false,
-  message: null
+  message: null,
 };
 export default function error(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -22,5 +22,5 @@ export default function error(state = INITIAL_STATE, action) {
 export const Creators = {
   setError: message => ({ type: Types.SET, payload: { message } }),
 
-  hideError: () => ({ type: Types.HIDE })
+  hideError: () => ({ type: Types.HIDE }),
 };

@@ -1,11 +1,11 @@
 export const Types = {
   GET_REQUEST: "playlistsDetails/GET_REQUEST",
-  GET_SUCCESS: "playlistsDetails/GET_SUCCESS"
+  GET_SUCCESS: "playlistsDetails/GET_SUCCESS",
 };
 
 const INITIAL_STATE = {
   data: {},
-  loading: false
+  loading: false,
 };
 export default function playlistsDetails(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -22,11 +22,11 @@ export default function playlistsDetails(state = INITIAL_STATE, action) {
 export const Creators = {
   getPlaylistDetailsRequest: id => ({
     type: Types.GET_REQUEST,
-    payload: { id }
+    payload: { id },
   }),
 
   getPlaylistDetailsSuccess: data => ({
     type: Types.GET_SUCCESS,
-    payload: { data }
-  })
+    payload: { data },
+  }),
 };

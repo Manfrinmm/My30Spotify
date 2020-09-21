@@ -1,21 +1,20 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
+
 import { bindActionCreators } from "redux";
-import { Creators as PlaylistDetailsActions } from "../../store/ducks/playlistDetails";
-import { Creators as PlayerActions } from "../../store/ducks/player";
-
-import { Container, Header, SongList, SongItem } from "./styles";
-
-import Loading from "../../components/Loading";
 
 import ClockIcon from "../../assets/images/clock.svg";
 import PlusIcon from "../../assets/images/plus.svg";
+import Loading from "../../components/Loading";
+import { Creators as PlayerActions } from "../../store/ducks/player";
+import { Creators as PlaylistDetailsActions } from "../../store/ducks/playlistDetails";
+import { Container, Header, SongList, SongItem } from "./styles";
 
 class Playlist extends Component {
   state = {
-    selectedSong: {}
+    selectedSong: {},
   };
+
   componentDidMount() {
     this.loadPlaylistDetails();
   }
@@ -106,13 +105,10 @@ class Playlist extends Component {
 
 const mapStateToProps = state => ({
   playlistDetails: state.playlistDetails,
-  currentSong: state.player.currentSong
+  currentSong: state.player.currentSong,
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ ...PlaylistDetailsActions, ...PlayerActions }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Playlist);
+export default connect(mapStateToProps, mapDispatchToProps)(Playlist);

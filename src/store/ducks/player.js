@@ -9,7 +9,7 @@ export const Types = {
   PLAYING: "player/PLAYING",
   HANGLE_POSITION: "player/HANGLE_POSITION",
   SET_POSITION: "player/SET_POSITION",
-  SET_VOLUME: "player/SET_VOLUME"
+  SET_VOLUME: "player/SET_VOLUME",
 };
 
 const INITIAL_STATE = {
@@ -19,7 +19,7 @@ const INITIAL_STATE = {
   position: null,
   positionShown: null,
   duration: null,
-  volume: 100
+  volume: 100,
 };
 
 export default function player(state = INITIAL_STATE, action) {
@@ -29,7 +29,7 @@ export default function player(state = INITIAL_STATE, action) {
         ...state,
         status: Sound.status.PLAYING,
         currentSong: action.payload.song,
-        list: action.payload.list
+        list: action.payload.list,
       };
 
     case Types.PLAY:
@@ -39,7 +39,7 @@ export default function player(state = INITIAL_STATE, action) {
 
     case Types.NEXT: {
       const currentIndex = state.list.findIndex(
-        song => song.id === state.currentSong.id
+        song => song.id === state.currentSong.id,
       );
 
       const next = state.list[currentIndex + 1];
@@ -49,7 +49,7 @@ export default function player(state = INITIAL_STATE, action) {
           ...state,
           currentSong: next,
           status: Sound.status.PLAYING,
-          position: 0
+          position: 0,
         };
       }
 
@@ -58,7 +58,7 @@ export default function player(state = INITIAL_STATE, action) {
 
     case Types.PREV: {
       const currentIndex = state.list.findIndex(
-        song => song.id === state.currentSong.id
+        song => song.id === state.currentSong.id,
       );
 
       const prev = state.list[currentIndex - 1];
@@ -68,7 +68,7 @@ export default function player(state = INITIAL_STATE, action) {
           ...state,
           currentSong: prev,
           status: Sound.status.PLAYING,
-          position: 0
+          position: 0,
         };
       }
 
@@ -81,14 +81,14 @@ export default function player(state = INITIAL_STATE, action) {
     case Types.HANGLE_POSITION:
       return {
         ...state,
-        positionShown: state.duration * action.payload.percent
+        positionShown: state.duration * action.payload.percent,
       };
 
     case Types.SET_POSITION:
       return {
         ...state,
         position: state.duration * action.payload.percent,
-        positionShown: null
+        positionShown: null,
       };
 
     case Types.SET_VOLUME:
@@ -101,7 +101,7 @@ export default function player(state = INITIAL_STATE, action) {
 export const Creators = {
   loadSong: (song, list) => ({
     type: Types.LOAD,
-    payload: { song, list }
+    payload: { song, list },
   }),
 
   play: () => ({ type: Types.PLAY }),
@@ -114,20 +114,20 @@ export const Creators = {
 
   playing: ({ position, duration }) => ({
     type: Types.PLAYING,
-    payload: { position, duration }
+    payload: { position, duration },
   }),
 
   handlePosition: percent => ({
     type: Types.HANGLE_POSITION,
-    payload: { percent }
+    payload: { percent },
   }),
 
   setPosition: percent => ({
     type: Types.SET_POSITION,
-    payload: { percent }
+    payload: { percent },
   }),
   setVolume: volume => ({
     type: Types.SET_VOLUME,
-    payload: { volume }
-  })
+    payload: { volume },
+  }),
 };
