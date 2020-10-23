@@ -2,7 +2,14 @@ import { createStore, compose, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 
 import reducers from "./ducks";
+import { IPlaylistsDetailsState } from "./ducks/playlistDetails";
+import { IPlaylistsState } from "./ducks/playlists";
 import sagas from "./sagas";
+
+export interface IState {
+  playlists: IPlaylistsState;
+  playlistDetails: IPlaylistsDetailsState;
+}
 
 const middlewares = [];
 

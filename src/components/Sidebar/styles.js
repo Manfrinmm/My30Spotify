@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Spinner } from "../Loading/styles";
 
 export const Container = styled.aside`
-  height: 100%;
+  height: 100vh;
   width: 200px;
   background: #121212;
   color: #b3b3b3;
@@ -12,7 +12,9 @@ export const Container = styled.aside`
   flex-direction: column;
   justify-content: space-between;
 
-  /* Estiliza a primeira div dentro desse componente */
+  position: sticky;
+  top: 0;
+
   > div {
     padding: 25px;
   }
@@ -29,6 +31,7 @@ export const Nav = styled.ul`
   li {
     display: flex;
     align-items: center;
+
     a {
       color: inherit;
       text-decoration: none;
@@ -65,6 +68,8 @@ export const NewPlaylist = styled.button`
   display: flex;
   align-items: center;
   padding: 15px 25px;
+
+  margin-bottom: 72px;
 
   &:hover {
     color: #fff;

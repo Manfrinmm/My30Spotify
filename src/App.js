@@ -7,6 +7,7 @@ import ErrorBox from "./components/ErrorBox";
 import Header from "./components/Header";
 import Player from "./components/Player";
 import Sidebar from "./components/Sidebar";
+import AppProvider from "./hooks";
 import Routes from "./routes";
 import store from "./store";
 import { Wrapper, Container, Content } from "./styles/components";
@@ -16,19 +17,21 @@ const App = () => (
   <>
     <GlobalStyle />
     <Provider store={store}>
-      <BrowserRouter>
-        <Wrapper>
+      <AppProvider>
+        <BrowserRouter>
+          {/* <Wrapper>
           <Container>
             <Sidebar />
             <Content>
               <ErrorBox />
               <Header />
-              <Routes />
-            </Content>
-          </Container>
-          <Player />
-        </Wrapper>
-      </BrowserRouter>
+              </Content>
+              </Container>
+              <Player />
+            </Wrapper> */}
+          <Routes />
+        </BrowserRouter>
+      </AppProvider>
     </Provider>
   </>
 );

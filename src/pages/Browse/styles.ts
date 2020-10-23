@@ -20,14 +20,16 @@ export const Title = styled.h1`
 `;
 
 export const List = styled.div`
-  margin-top: 20px;
-  display: flex;
+  margin: 20px 0;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  gap: 24px;
 `;
 
 export const Playlist = styled(Link)`
   display: flex;
   flex-direction: column;
-  margin-left: 20px;
   width: 250px;
   text-decoration: none;
 
@@ -46,13 +48,11 @@ export const Playlist = styled(Link)`
     margin-top: 5px;
     font-size: 13px;
     color: #b3b3b3;
+    max-height: 72px;
+    overflow: hidden;
   }
 
   &:hover img {
     opacity: 0.4;
-  }
-
-  &:first-child {
-    margin: 0;
   }
 `;

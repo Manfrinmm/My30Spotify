@@ -41,7 +41,7 @@ const Player = ({
   <Container>
     {!!player.currentSong && (
       <Sound
-        url={player.currentSong.file}
+        url={player.currentSong.preview_url}
         playStatus={player.status}
         onFinishedPlaying={next}
         onPlaying={playing}
@@ -54,12 +54,12 @@ const Player = ({
         <>
           <img
             src={player.currentSong.thumbnail}
-            alt={player.currentSong.title}
+            alt={player.currentSong.name}
           />
 
           <div>
-            <span>{player.currentSong.title}</span>
-            <small>{player.currentSong.author}</small>
+            <span>{player.currentSong.name}</span>
+            <small>{player.currentSong.artists.join(", ")}</small>
           </div>
         </>
       )}

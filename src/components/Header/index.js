@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useCallback } from "react";
 
+import { useAuth } from "../../hooks/auth";
 import { Container, Search, User } from "./styles";
 
-const Header = () => (
-  <Container>
-    <Search>
-      <input placeholder="Search" />
-    </Search>
+const Header = () => {
+  const { signOut, user } = useAuth();
 
-    <User>
-      <img
-        src="https://media-exp1.licdn.com/dms/image/C4D03AQFT_RrYP1_BFg/profile-displayphoto-shrink_200_200/0?e=1602115200&v=beta&t=0Fcoa5IE7jaTHhIva9RazjPLH0HAdSKYdVfeRaJ_49I"
-        alt="Avatar"
-      />
-      Matheus Menezes
-    </User>
-  </Container>
-);
+  const handleSignOut = useCallback(() => {
+    signOut();
+  }, [signOut]);
+
+  return (
+    <Container>
+      <Search>
+        <input placeholder="Search" />
+      </Search>
+
+      <User>
+        <img src={user.avatar_url} alt={user.name} />
+        {user.name}
+        <button type="button" onClick={handleSignOut}>
+          Sair
+        </button>
+      </User>
+    </Container>
+  );
+};
 
 export default Header;

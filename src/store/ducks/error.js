@@ -7,6 +7,7 @@ const INITIAL_STATE = {
   visible: false,
   message: null,
 };
+
 export default function error(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.SET:

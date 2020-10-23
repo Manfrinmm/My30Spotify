@@ -2,21 +2,24 @@ import styled, { css } from "styled-components";
 
 import { Spinner } from "../../components/Loading/styles";
 
+interface ISongItemProps {
+  selected: boolean;
+  playing: boolean;
+}
+
 export const Container = styled.div`
   margin-top: 30px;
+`;
 
+export const LoadingContainer = styled.div`
   ${Spinner} {
     height: 48px;
   }
 
-  ${props =>
-    props.loading &&
-    css`
-      height: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    `}
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const Header = styled.header`
@@ -43,7 +46,8 @@ export const Header = styled.header`
     }
 
     p {
-      margin-top: 0;
+      margin-top: 8px;
+
       color: #b3b3b3;
       font-size: 11px;
       letter-spacing: 1.11px;
@@ -84,7 +88,7 @@ export const SongList = styled.table`
   }
 `;
 
-export const SongItem = styled.tr`
+export const SongItem = styled.tr<ISongItemProps>`
   td {
     border-top: 1px solid #282828;
     font-size: 13px;

@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es6": true
+    "es6": true,
+    "node": true
   },
   "extends": [
     "plugin:react/recommended",
@@ -25,19 +26,28 @@
   ],
   "rules": {
     "prettier/prettier": "error",
-    // "react/jsx-props-no-spreading": "off",
-
     // "import/prefer-default-export": "off",
     // "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     // "global-require": "off",
     // "react-native/no-raw-text": "off",
     // "no-param-reassign": "off",
     // "no-underscore-dangle": "off",
-    // "camelcase": "off",
     // "no-console": ["error", { "allow": ["tron"] }],
-    // "no-use-before-define": "off",
+    "camelcase": "off",
+    "no-use-before-define": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": ["PascalCase"],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
     "react/jsx-one-expression-per-line": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
@@ -79,7 +89,8 @@
       // enable the rule specifically for TypeScript files
       "files": ["*.ts", "*.tsx"],
       "rules": {
-        "@typescript-eslint/explicit-module-boundary-types": ["error"]
+        "@typescript-eslint/explicit-module-boundary-types": ["error"],
+        "react/prop-types": "off"
       }
     }
   ],

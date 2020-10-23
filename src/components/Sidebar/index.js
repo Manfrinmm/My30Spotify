@@ -40,7 +40,7 @@ class Sidebar extends Component {
               <a href="/">Tocados recentemente</a>
             </li>
             <li>
-              <a href="/">Músicas</a>
+              <Link to="/my-songs">Músicas curtidas</Link>
             </li>
             <li>
               <a href="/">Álbums</a>
